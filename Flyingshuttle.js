@@ -1,13 +1,18 @@
 
 //board
 let board;
-let boardWidth = 960;
-let boardHeight = 600;
+let baseWidth = 960;
+let baseHeight = 600;
+let scale = Math.min(window.innerWidth / baseWidth, window.innerHeight / baseHeight);
+let boardWidth = baseWidth * scale;
+let boardHeight = baseHeight * scale;
+
 let context;
 
 //bird
-let birdWidth = 64; 
-let birdHeight = 100;
+let birdWidth = 64 * scale;
+let birdHeight = 100 * scale;
+
 let birdX = boardWidth/8;
 let birdY = boardHeight/2;
 let birdImg;
@@ -21,8 +26,8 @@ let bird = {
 
 //pipes
 let pipeArray = [];
-let pipeWidth = 90; 
-let pipeHeight = 602;
+let pipeWidth = 90 * scale;
+let pipeHeight = 602 * scale;
 let pipeX = boardWidth;
 let pipeY = 0;
 
@@ -39,8 +44,9 @@ let score = 0;
 
 window.onload = function() {
     board = document.getElementById("board");
-    board.height = boardHeight;
     board.width = boardWidth;
+    board.height = boardHeight;
+
     context = board.getContext("2d"); 
     birdImg = new Image();
     birdImg.src = "./Flyingshuttle.png";
@@ -89,6 +95,11 @@ function handleJump() {
 
     
 }
+
+window.addEventListener("resize", () => {
+    location.reload();
+});
+
 
 function update() {
     requestAnimationFrame(update);
@@ -146,7 +157,7 @@ function placePipes() {
 
     
     let randomPipeY = pipeY - pipeHeight/3 - Math.random()*(pipeHeight/2);
-    let openingSpace = board.height/3;
+    let openingSpace = boardHeight / 3;
 
     let topPipe = {
         img : topPipeImg,
