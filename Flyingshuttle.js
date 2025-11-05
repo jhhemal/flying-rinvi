@@ -34,10 +34,11 @@ let pipeY = 0;
 let topPipeImg;
 let bottomPipeImg;
 
-//physics
-let velocityX = -6; //pipes moving left speed
-let velocityY = 0; //bird jump speed
-let gravity = 0.3;
+// physics
+let velocityX = -13 * scale; // slower movement on smaller screens
+let gravity = 0.3 * scale;
+let jumpStrength = -6 * scale; // we'll use this instead of hardcoding -6
+
 
 let gameOver = false;
 let score = 0;
@@ -82,7 +83,7 @@ document.addEventListener("mousedown", handleJump); // for desktop clicks
 document.addEventListener("keydown", moveBird); // still keep for keyboard
 
 function handleJump() {
-    velocityY = -6;
+    velocityY = jumpStrength;
 
     if (gameOver) {
         bird.y = birdY;
@@ -91,6 +92,7 @@ function handleJump() {
         gameOver = false;
     }
 }
+
 
 
     
