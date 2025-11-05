@@ -58,7 +58,7 @@ window.onload = function() {
     setInterval(placePipes, 1200);
 
     // Add a touch event listener to the canvas
-    board.addEventListener("touc    hstart", () => {
+    board.addEventListener("touchstart", () => {
         velocityY = -6;
 
         if (gameOver) {
