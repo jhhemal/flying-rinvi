@@ -4,6 +4,13 @@ let board;
 let baseWidth = 960;
 let baseHeight = 600;
 let scale = Math.min(window.innerWidth / baseWidth, window.innerHeight / baseHeight);
+//this for mobile section
+let isMobile = /Mobi|Android/i.test(navigator.userAgent);
+if (isMobile) {
+  velocityX = -8;   // slower pipes
+  gravity = 0.25;   // slower fall
+}
+
 let boardWidth = baseWidth * scale;
 let boardHeight = baseHeight * scale;
 
