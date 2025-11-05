@@ -58,17 +58,36 @@ window.onload = function() {
     setInterval(placePipes, 2000);
 
     // Add a touch event listener to the canvas
-    board.addEventListener("touchstart", () => {
-        velocityY = -6;
+    // board.addEventListener("touchstart", () => {
+    //     velocityY = -6;
 
-        if (gameOver) {
-            bird.y = birdY;
-            pipeArray = [];
-            score = 0;
-            gameOver = false;
-        }
-    });
-    document.addEventListener("keydown", moveBird);
+    //     if (gameOver) {
+    //         bird.y = birdY;
+    //         pipeArray = [];
+    //         score = 0;
+    //         gameOver = false;
+    //     }
+    // });
+    // document.addEventListener("keydown", moveBird);
+
+    // Allow tap or click anywhere on screen (mobile + desktop)
+document.addEventListener("touchstart", handleJump);
+document.addEventListener("mousedown", handleJump); // for desktop clicks
+document.addEventListener("keydown", moveBird); // still keep for keyboard
+
+function handleJump() {
+    velocityY = -6;
+
+    if (gameOver) {
+        bird.y = birdY;
+        pipeArray = [];
+        score = 0;
+        gameOver = false;
+    }
+}
+
+
+    
 }
 
 function update() {
