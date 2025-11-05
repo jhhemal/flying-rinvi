@@ -184,7 +184,7 @@ function placePipes() {
 
 function moveBird(e) {
     if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
-        velocityY = -6;
+        velocityY = jumpStrength;
 
       
         if (gameOver) {
